@@ -1,6 +1,9 @@
 (function () {
 
     var EXPIRY_DATE = new Date("2026-07-20");
+    var PROJECT_NAME = "Ondemand Home Services";
+    var CONTACT_EMAIL = "pratham0823@gmail.com";
+    var CONTACT_PHONE = "+91 9999999999";
 
     var now = new Date();
     var expired = now.getTime() > EXPIRY_DATE.getTime();
