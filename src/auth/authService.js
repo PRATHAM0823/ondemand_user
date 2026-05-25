@@ -6,12 +6,19 @@ const checkSession = async () => {
     const token = Cookies.get("token");
     if (!token) return { isAuth: false, session: null };
 
-    const result = await axios.get("https://ondemand-backend-o30w.onrender.com", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const result = await axios.get(
+      "https://ondemand-backend-o30w.onrender.com/session",session,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
     const userData = result.data.userData;
-    return { isAuth: userData?.isAuth || false, session: userData?.session || null };
-  } catch {
+    return {
+      isAuth: userData?.isAuth || false,
+      session: userData?.session || null,
+    };
+  } catch(e) {
+    console.error("Error checking session:", e);
     return { isAuth: false, session: null };
   }
 };
