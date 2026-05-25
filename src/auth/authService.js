@@ -7,7 +7,7 @@ const checkSession = async () => {
     if (!token) return { isAuth: false, session: null };
 
     const result = await axios.get(
-      "https://ondemand-backend-o30w.onrender.com",session,
+      "https://ondemand-backend-o30w.onrender.com/session",
       {
         headers: { Authorization: `Bearer ${token}` },
       },
@@ -17,8 +17,7 @@ const checkSession = async () => {
       isAuth: userData?.isAuth || false,
       session: userData?.session || null,
     };
-  } catch(e) {
-    console.error("Error checking session:", e);
+  } catch {
     return { isAuth: false, session: null };
   }
 };
